@@ -73,7 +73,7 @@ export function setup() {
 
 			await app.workbench.sqlNotebook.changeTextCellView('Split View');
 			const sampleText: string = 'Test text cells';
-			await app.workbench.sqlNotebook.waitForTypeInEditor(sampleText);
+			await app.workbench.sqlNotebook.waitForTypeInEditor(sampleText, true);
 			await app.code.dispatchKeybinding('escape');
 			await app.workbench.sqlNotebook.waitForTextCellPreviewContent(sampleText, 'p');
 		});

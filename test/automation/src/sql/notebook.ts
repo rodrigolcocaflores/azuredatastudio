@@ -85,8 +85,11 @@ export class Notebook {
 
 	// Cell Actions
 
-	async waitForTypeInEditor(text: string) {
-		const editor = '.notebook-cell.active .monaco-editor';
+	async waitForTypeInEditor(text: string, markdown?: boolean) {
+		let editor = '.notebook-cell.active .monaco-editor';
+		if (markdown) {
+			editor = '.notebook-cell.active .notebook-text .monaco-editor';
+		}
 		await this.code.waitAndClick(editor);
 
 		const textarea = `${editor} textarea`;
