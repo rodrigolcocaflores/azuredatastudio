@@ -22,6 +22,8 @@ export function setup() {
 
 			await app.workbench.sqlNotebook.runActiveCell();
 			await app.workbench.sqlNotebook.waitForActiveCellResults();
+
+			await app.code.dispatchKeybinding('escape');
 		});
 
 		it('can open ipynb file, run all, and save notebook with outputs', async function () {
@@ -73,7 +75,7 @@ export function setup() {
 
 			await app.workbench.sqlNotebook.changeTextCellView('Split View');
 			const sampleText: string = 'Test text cells';
-			await app.workbench.sqlNotebook.waitForTypeInEditor(sampleText, true);
+			await app.workbench.sqlNotebook.waitForTypeInEditor(sampleText);
 			await app.code.dispatchKeybinding('escape');
 			await app.workbench.sqlNotebook.waitForTextCellPreviewContent(sampleText, 'p');
 		});
