@@ -23,7 +23,8 @@ export function setup() {
 			await app.workbench.sqlNotebook.runActiveCell();
 			await app.workbench.sqlNotebook.waitForActiveCellResults();
 
-			await app.code.dispatchKeybinding('escape');
+			const deleteButton = 'a[class="action-label codicon masked-icon delete"]';
+			await app.code.waitAndClick(deleteButton);
 		});
 
 		it('can open ipynb file, run all, and save notebook with outputs', async function () {
